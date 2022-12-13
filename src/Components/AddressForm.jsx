@@ -16,15 +16,28 @@ import {
   Radio,
   Stack,
 } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { AddingAdd } from '../Redux/action'
 import "../Styles/Address.css"
 
 
 const AddressForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
+  const [data, setData] = useState({})
+  const dispatch=useDispatch()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value })
+  }
+  const handleadd = (e) => {
+    e.preventDefault();
+    // console.log(data)
+    dispatch(AddingAdd(data))
+  }
 
   return (
     <>
@@ -46,15 +59,15 @@ const AddressForm = () => {
               <FormControl className='inpname'>
                 <div className='name'>
                   <FormLabel fontWeight={"normal"}>First Name</FormLabel>
-                  <Input ref={initialRef} placeholder='First name' />
+                  <Input ref={initialRef} name="fname" onChange={handleChange} type="text" placeholder='First name' />
                 </div>
                 <div className='name'>
                   <FormLabel fontWeight={"normal"}>Last Name</FormLabel>
-                  <Input ref={initialRef} placeholder='Last name' />
+                  <Input ref={initialRef} name="lname" onChange={handleChange} type="text" placeholder='Last name' />
                 </div>
                 <div>
                   <FormLabel fontWeight={"normal"}>Phone Number</FormLabel>
-                  <Input ref={initialRef} placeholder='Phone Number' />
+                  <Input ref={initialRef} name="phone" onChange={handleChange} type="number" placeholder='Phone Number' />
                 </div>
               </FormControl>
               <br />
@@ -62,45 +75,45 @@ const AddressForm = () => {
               <FormControl className='inpname' mt={4}>
                 <div className='name'>
                   <FormLabel fontWeight={"normal"}>House No.</FormLabel>
-                  <Input placeholder='House Number' />
+                  <Input name="house" onChange={handleChange} type="number" placeholder='House Number' />
                 </div>
                 <div className='address'>
                   <FormLabel fontWeight={"normal"}>Address </FormLabel>
-                  <Input placeholder='Address ' />
+                  <Input name='address' onChange={handleChange} type="text" placeholder='Address ' />
                 </div>
               </FormControl>
 
               <FormControl className='inpname' mt={4}>
                 <div className='name'>
                   <FormLabel fontWeight={"normal"}>City Name</FormLabel>
-                  <Input placeholder='City' />
+                  <Input name='city' onChange={handleChange} type="text" placeholder='City' />
                 </div>
                 <div >
                   <FormLabel fontWeight={"normal"}>Pin Code</FormLabel>
-                  <Input placeholder='Pin' />
+                  <Input name='pin' onChange={handleChange} type="number" placeholder='Pin' />
                 </div>
               </FormControl>
               <br />
               <label>Choose Nickname for this Address</label>
               <br />
 
-              <RadioGroup defaultValue='home'>
-                <Stack spacing={5} direction='row'>
-                  <Radio colorScheme='green' value='home'>
-                    HOME
-                  </Radio>
-                  <Radio colorScheme='green' value='office'>
-                    OFFICE
-                  </Radio>
-                  <Radio colorScheme='green' value='other'>
-                    OTHER
-                  </Radio>
-                </Stack>
+              <RadioGroup name='location' onChange={handleChange} defaultValue="home" >
+
+                <Radio colorScheme='green' name='location' value='home'>
+                  HOME
+                </Radio>
+                <Radio colorScheme='green' name='location' value='office'>
+                  OFFICE
+                </Radio>
+                <Radio colorScheme='green' name='location' value='other'>
+                  OTHER
+                </Radio>
+
               </RadioGroup>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="green" mr={3}>
+              <Button onClick={handleadd} colorScheme="green" mr={3}>
                 ADD ADDRESS
               </Button>
               <Button onClick={onClose}>CANCEL</Button>

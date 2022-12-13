@@ -1,19 +1,79 @@
-import React from 'react'
+import { Center, Wrap, WrapItem } from '@chakra-ui/react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import AddressCard from '../Components/AddressCard'
 import AddressForm from '../Components/AddressForm'
 import DeliveryOption from '../Components/DeliveryOption'
 import OrderSummary from '../Components/OrderSummary'
 import Payment from '../Components/Payment'
+import { getAdd } from '../Redux/action'
 import "../Styles/Checkout.css"
 
 const Checkout = () => {
+    const dispatch = useDispatch()
+    const AllAddress = useSelector((store) => store.AllAddress)
+    const [style, setStyle] = useState("AddressBoxsmall");
+    const[ns,setNs]=useState("")
+
+    // console.log(AllAddress)
+
+    useEffect(() => {
+        dispatch(getAdd)
+    }, [])
+
+    const changeStyle = () => {
+      
+        setStyle("AddressBoxbig");
+      };
+
+      const cardclick= useCallback((id)=>{
+        if(style==="AddressBoxbig"){
+            setStyle("AddressBoxsmall");
+        }else{
+            setStyle("AddressBoxbig");
+        } 
+      },[style])
+      console.log(style)
+    //   console.log(ns)
+    //   useEffect(()=>{
+    //     if(ns!==""){
+    //         setStyle()
+    //     }else{
+    //         setStyle("AddressBoxsmall")
+    //     }
+    //   },[ns])
     return (
         <div className='Checkout'>
             <div className='fake'>
             </div>
             <div className='Allbody'>
                 <div className='leftside'>
-                    <div className='AddressBox'>
-                        <AddressForm />
+                    <div className={style} onClick={changeStyle}>
+                        {/* <div className='addresscard'>
+                            
+                        </div> */}
+                        
+                        <Wrap justify='space-between'>
+                            {
+                                style==="AddressBoxbig"&&
+                                <WrapItem>
+                                <Center >
+                                {
+                                AllAddress &&
+                                AllAddress.map((item) => {
+                                    return (<AddressCard key={item.id} {...item} cardclick={cardclick} />)
+                                })
+                                }
+                                </Center>
+                            </WrapItem>
+                            }
+                            <WrapItem justifyContent={'center'}>
+                                <Center >
+                                <AddressForm />
+                                </Center>
+                            </WrapItem>
+
+                        </Wrap>
                     </div>
                     <div className="delivery" >
                         <DeliveryOption />

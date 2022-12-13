@@ -17,12 +17,21 @@
     display: block;
     
 }
-.AddressBox{
+.AddressBoxbig{
     border: 1px solid grey;
     width: 850px;
     height: fit-content;
-    margin-bottom: 15px;
-
+    margin-bottom: 15px; 
+}
+.AddressBoxsmall{
+    border: 1px solid red;
+    width: 850px;
+    height: fit-content;
+    margin-bottom: 15px;  
+}
+.addresscard{
+    width: 300px;
+    border: 1px solid red;
 }
 .delivery{
     border: 1px solid grey;
@@ -55,6 +64,8 @@
     border: 1px solid grey;
     width: 650px;
     height: fit-content;
+    display: flex;
+
 }
 .delivery{
     border: 1px solid grey;
