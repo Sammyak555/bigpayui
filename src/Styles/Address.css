@@ -1,0 +1,17 @@
+.add{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: rgb(79, 79, 79);
+    
+}
+.inpname{
+    display: flex;
+    gap: 20px;
+}
+.name{
+    width: 300px;
+}
+.address{
+    width: 535px;
+}
