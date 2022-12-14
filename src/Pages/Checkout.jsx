@@ -13,7 +13,7 @@ const Checkout = () => {
     const dispatch = useDispatch()
     const AllAddress = useSelector((store) => store.AllAddress)
     const [style, setStyle] = useState("AddressBoxsmall");
-    const[ns,setNs]=useState("")
+    const [ns, setNs] = useState("")
 
     // console.log(AllAddress)
 
@@ -22,26 +22,23 @@ const Checkout = () => {
     }, [])
 
     const changeStyle = () => {
-      
-        setStyle("AddressBoxbig");
-      };
 
-      const cardclick= useCallback((id)=>{
-        if(style==="AddressBoxbig"){
-            setStyle("AddressBoxsmall");
-        }else{
-            setStyle("AddressBoxbig");
-        } 
-      },[style])
-      console.log(style)
-    //   console.log(ns)
-    //   useEffect(()=>{
-    //     if(ns!==""){
+        setStyle("AddressBoxbig");
+    };
+
+    // const cardclick = (id) => {
+    //     setStyle("AddressBoxsmall");
+    //     console.log("hi")
+    // }
+    console.log(style)
+    console.log(ns)
+    // useEffect(() => {
+    //     if (ns !== "") {
     //         setStyle()
-    //     }else{
+    //     } else {
     //         setStyle("AddressBoxsmall")
     //     }
-    //   },[ns])
+    // }, [ns])
     return (
         <div className='Checkout'>
             <div className='fake'>
@@ -52,24 +49,24 @@ const Checkout = () => {
                         {/* <div className='addresscard'>
                             
                         </div> */}
-                        
+
                         <Wrap justify='space-between'>
                             {
-                                style==="AddressBoxbig"&&
+                                style === "AddressBoxbig" &&
                                 <WrapItem>
-                                <Center >
-                                {
-                                AllAddress &&
-                                AllAddress.map((item) => {
-                                    return (<AddressCard key={item.id} {...item} cardclick={cardclick} />)
-                                })
-                                }
-                                </Center>
-                            </WrapItem>
+                                    <Center >
+                                        {
+                                            AllAddress &&
+                                            AllAddress.map((item) => {
+                                                return (<AddressCard key={item.id} {...item} setStyle={setStyle} />)
+                                            })
+                                        }
+                                    </Center>
+                                </WrapItem>
                             }
                             <WrapItem justifyContent={'center'}>
                                 <Center >
-                                <AddressForm />
+                                    <AddressForm />
                                 </Center>
                             </WrapItem>
 
@@ -78,7 +75,7 @@ const Checkout = () => {
                     <div className="delivery" >
                         <DeliveryOption />
                     </div>
-                    <div className="payment" >
+                    <div className="paymentbox" >
                         <Payment />
                     </div>
                 </div>

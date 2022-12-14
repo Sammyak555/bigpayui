@@ -39,11 +39,14 @@
     height: fit-content;
     margin-bottom: 15px;
 }
-.payment{
-    border: 1px solid grey;
+.paymentbox{
+    border: 1px solid blue;
     width: 850px;
     height: fit-content;
     margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(253, 247, 238);
 }
 
  @media only screen and (max-width: 1200px) {
@@ -72,6 +75,7 @@
     width: 650px;
     height: fit-content;
     margin-bottom: 15px;
+    
 }
 .payment{
     border: 1px solid grey;
