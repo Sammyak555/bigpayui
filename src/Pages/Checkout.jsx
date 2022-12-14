@@ -30,8 +30,7 @@ const Checkout = () => {
     //     setStyle("AddressBoxsmall");
     //     console.log("hi")
     // }
-    console.log(style)
-    console.log(ns)
+    
     // useEffect(() => {
     //     if (ns !== "") {
     //         setStyle()
