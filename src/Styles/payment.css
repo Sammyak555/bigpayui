@@ -40,7 +40,7 @@
     
     width: 818px;
     margin-left: 15px;
-    height: 470px;
+    /* height: 470px; */
     background-color: white;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -76,26 +76,136 @@
     height: 100%;
 }
 .leftother{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 170px;
     height: 100%;
     display: block;
     
 }
 .rightother{
-    border: 1px solid blue;
-    width: 74%;
-    height: 100%;
+    /* border: 1px solid blue; */
+    width: 77%;
+    /* height: 100%; */
+    justify-content: center;
+    align-items: center;
+    background-color:  rgb(253, 247, 238);
 }
 .leftothercomp{
-    border: 1px solid violet;
+    border: 1px solid grey;
     width: 100%;
     height: 60px;
     justify-content: center;
     align-items: center;
+        
 }
 .leftothercomp>h1{
     color: rgb(72, 72, 72);
     font-family:Arial, Helvetica, sans-serif;
     margin-top: 15px;
+}
+.rightotherbox{
+    width: 450px;
+    margin: auto;
+    border: 1px solid grey;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 0px;
+    background-color: white;
+}
+.netbank{
+   
+    background-color: white;
+    width: 88%;
+    margin: auto;
+    margin-top: 20px;
+}
+.upiother{
+    width: 450px;
+    margin: auto;
+    border: 1px solid grey;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 0px;
+    background-color: white;
+    text-align: start;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+    .offer{
+   
+        width: 399px;
+        margin-top: 15px;
+        margin-left: 15px;
+        border: 1px solid grey;
+        border-bottom: none;
+    }
+    .offer>h1{
+        color: rgb(78, 77, 77);
+        font-family: sans-serif;
+        margin-left: -50px;
+        font-size: medium;
+        font-weight: 500;
+    }
+    .offer>h3{
+        color: grey;
+        font-size: small;
+        
+    }
+    .other{
+        margin-top: 15px;
+        width: 399px;
+        height: 80px;
+        border: 1px solid grey;
+        margin-right: 15px;
+        border-bottom: none;
+        
+    }
+    .detailsother{
+        
+        width: 617px;
+        margin-left: 15px;
+        /* height: 470px; */
+        background-color: white;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        border: 1px solid grey;
+        border-right: none;
+    }
+    
+    .detailsoffer{
+        border: 1px solid grey;
+        width: 618px;
+        margin-left: 15px;
+        height: auto;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        display: block;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        border-left: none;
+        border-bottom: none;
+        
+    }
+    .payoffer{
+        width: 600px;
+        border: 1px solid rgb(206, 203, 203);
+        margin-bottom: 9px;
+        
+    }
+    .rightotherbox{
+        width: 380px;
+        margin: auto;
+        border: 1px solid grey;
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 0px;
+        background-color: white;
+    }
+
+
 }

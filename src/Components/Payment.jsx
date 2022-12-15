@@ -1,11 +1,13 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Flex, Input } from '@chakra-ui/react';
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, TagLabel, useDisclosure } from '@chakra-ui/react';
+import { m } from 'framer-motion';
 import React, { useState } from 'react'
 import "../Styles/payment.css"
 
 const Payment = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [detail, setDetail] = useState(true)
   const [active, setActive] = useState(true)
-  const [divchange,setDivchange]= useState("credit")
+  const [divchange, setDivchange] = useState("credit")
   // const[active1,setActive2] = useState(false)
 
   console.log(divchange)
@@ -26,33 +28,143 @@ const Payment = () => {
         <div className='detailsother'>
           <div className='detailsotherbox'>
             <div className='leftother'>
-              <div className='leftothercomp' onClick={()=>setDivchange("credit")}><h1>Credit Card/Debit Card</h1></div>
-              <div className='leftothercomp' onClick={()=>setDivchange("Nbank")}><h1>Net Banking</h1></div>
-              <div className='leftothercomp' onClick={()=>setDivchange("upi")}><h1>UPI</h1></div>
-              <div className='leftothercomp' onClick={()=>setDivchange("wallet")}><h1>Wallet</h1></div>
-              <div className='leftothercomp' onClick={()=>setDivchange("otp")}><h1>Cash On Delivery</h1></div>
+              <div className='leftothercomp' onClick={() => setDivchange("credit")}><h1>Credit Card/Debit Card</h1></div>
+              <div className='leftothercomp' onClick={() => setDivchange("Nbank")}><h1>Net Banking</h1></div>
+              <div className='leftothercomp' onClick={() => setDivchange("upi")}><h1>UPI</h1></div>
+              <div className='leftothercomp' onClick={() => setDivchange("wallet")}><h1>Wallet</h1></div>
+              <div className='leftothercomp' onClick={() => setDivchange("otp")}><h1>Cash On Delivery</h1></div>
             </div>
             <div className='rightother'>
               {
-                divchange==="credit"&&
-                <div>credit
-                  
+                divchange === "credit" &&
+                <div className='rightotherbox'>credit
+                  <div >
+                  <FormControl isRequired>
+                    <FormLabel>First name</FormLabel>
+                    <Input size='sm' variant='flushed' placeholder='First name' />
+                    <br />
+                    <HStack spacing='24px'>
+
+                      <Input size='sm' variant='flushed' placeholder='First name' />
+                      <Input size='sm' variant='flushed' placeholder='First name' />
+                    </HStack>
+                    <br />
+                    <Button>Make Payment</Button>
+                  </FormControl>
+                  </div>
                 </div>
               }
               {
-                divchange==="Nbank"&&
-                <div>nbank</div>
+                divchange === "Nbank" &&
+                <div>
+                  <div className='netbank' >
+                    <Accordion    allowToggle >
+                      <AccordionItem >
+                        <h2 >
+                          <AccordionButton >
+                            <Box flex='1' textAlign='left'>
+                              <Flex >
+                                <img style={{ height: "30px" }} src="https://assets.juspay.in/juspay/payments/in.hyper.pay.bb_staging/beta/WEB/1.0rc1/assets/ic_bank_607152.png" alt="" />
+                                <Box marginLeft={'10px'}>
+                                  <h1 style={{ color: "rgb(72, 72, 72)", fontFamily: "sans-serif",marginTop:"5px" }}>HDFC Bank</h1>
+                                  </Box>
+                              </Flex>
+                            </Box>
+                            
+                          </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                          <label style={{color:"grey"}}>Enter Linked Mobile Number</label>
+                          <Input variant='flushed' width='xs' />
+                          <br />
+                          <h3 style={{ color: "rgb(75, 75, 75)", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
+
+                          <Button variant='solid'   marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                            Place Order & Pay</Button>
+                        </AccordionPanel>
+                      </AccordionItem>
+                    </Accordion>
+                    </div>
+                    <div className='netbank'>
+                    <Accordion allowToggle >
+                      <AccordionItem >
+                        <h2 >
+                          <AccordionButton >
+                            <Box flex='1' textAlign='left'>
+                              <Flex >
+                                <img style={{ height: "30px" }} src="https://assets.juspay.in/juspay/payments/in.hyper.pay.bb_staging/beta/WEB/1.0rc1/assets/ic_bank_508534.png" alt="" />
+                                <Box marginLeft={'10px'}>
+                                  <h1 style={{ color: "rgb(72, 72, 72)", fontFamily: "sans-serif",marginTop:"5px" }}>ICICI Netbanking</h1>
+                                  </Box>
+                              </Flex>
+                            </Box>
+                            
+                          </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                          <label style={{color:"grey"}}>Enter Linked Mobile Number</label>
+                          <Input variant='flushed' width='xs' />
+                          <br />
+                          <h3 style={{ color: "rgb(75, 75, 75)", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
+
+                          <Button variant='solid'   marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                            Place Order & Pay</Button>
+                        </AccordionPanel>
+                      </AccordionItem>
+                    </Accordion>
+                    </div>
+                    <div className='netbank'>
+                    <Accordion allowToggle >
+                      <AccordionItem >
+                        <h2 >
+                          <AccordionButton >
+                            <Box flex='1' textAlign='left'>
+                              <Flex >
+                                <img style={{ height: "30px" }} src="https://assets.juspay.in/juspay/payments/in.hyper.pay.bb_staging/beta/WEB/1.0rc1/assets/ic_bank_508548.png" alt="" />
+                                <Box marginLeft={'10px'}>
+                                  <h1 style={{ color: "rgb(72, 72, 72)", fontFamily: "sans-serif",marginTop:"5px" }}>State Bank Of India</h1>
+                                  </Box>
+                              </Flex>
+                            </Box>
+                            
+                          </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                          <label style={{color:"grey"}}>Enter Linked Mobile Number</label>
+                          <Input variant='flushed' width='xs' />
+                          <br />
+                          <h3 style={{ color: "rgb(75, 75, 75)", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
+
+                          <Button variant='solid'   marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                            Place Order & Pay</Button>
+                        </AccordionPanel>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
               }
               {
-                divchange==="upi"&&
-                <div>upi</div>
+                divchange === "upi" &&
+                <div >
+                  <Heading size={'md'} marginTop={'10px'} marginLeft={"20px"} textAlign="start">Pay Using UPI</Heading>
+                  <div className='upiother'>
+                    <label style={{fontWeight:"bold",color:"rgb(72, 72, 72)"}} >UPI id :</label>
+                    <br />
+                  <Input variant='flushed' width='xs' placeholder={'user@bankname'} />
+                  <br />
+                  <h3 style={{ color: "rgb(75, 75, 75)",fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
+
+                  <Button variant='solid' width='25%'  marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                    SEND OTP</Button>
+                  </div>
+                </div>
               }
               {
-                divchange==="wallet"&&
+                divchange === "wallet" &&
                 <div>wallet</div>
               }
               {
-                divchange==="otp"&&
+                divchange === "otp" &&
                 <div>otp</div>
               }
             </div>
@@ -79,7 +191,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -108,7 +220,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -137,7 +249,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -166,7 +278,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -195,7 +307,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -224,7 +336,7 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <input type="text" style={{ backgroundColor: "rgb(253, 247, 238)", marginLeft: "-370px" }} />
+                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
                   <br />
                   <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 

@@ -83,7 +83,31 @@
     height: fit-content;
     margin-bottom: 15px;
 }
-
+.paymentbox{
+ 
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(253, 247, 238);
+}
+.AddressBoxbig{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px; 
+}
+.AddressBoxsmall{
+    border: 1px solid red;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;  
+}
+.addresscard{
+    width: 200px;
+    border: 1px solid red;
+}
 
 }
 
