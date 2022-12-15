@@ -16,7 +16,7 @@ const Payment = () => {
   const [note, setNote] = useState("")
   // const[active1,setActive2] = useState(false)
 
-  console.log(verify)
+  console.log(pininput)
 
   return (
     <div className='payment'>
@@ -79,7 +79,7 @@ const Payment = () => {
 
                             <ModalContent>
                               <ModalHeader>Payment Process</ModalHeader>
-                              <ModalCloseButton onClick={() => { setVerify(true); setSuccess(''); setNote(''); }} />
+                              <ModalCloseButton onClick={() => { setVerify(true); setSuccess(''); setNote('');setPininput(''); }} />
                               {verify &&
                                 <ModalBody>
                                   <h1 >Amount Payable : </h1>
@@ -89,10 +89,17 @@ const Payment = () => {
                                 </ModalBody>
                               }
                               {
-                                !verify &&
+                                !verify&&pininput==="12345" &&
                                 <ModalBody>
                                   <h1 style={{ margin: "auto" }}>{note}</h1>
-                                  <img style={{ margin: "auto" }} src={success} alt="" />
+                                  <img style={{ margin: "auto",width:"200px" }} src={success} alt="" />
+                                </ModalBody>
+                              }
+                              {
+                                !verify&&pininput!=="12345" &&
+                                <ModalBody>
+                                  <h1 style={{ margin: "auto" }}>Wrong Credentials !</h1>
+                                  <img style={{ margin: "auto",width:"200px" }} src="https://i.pinimg.com/originals/d0/17/47/d01747c4285afa4e7a6e8656c9cd60cb.png" alt="" />
                                 </ModalBody>
                               }
                               <ModalFooter>
