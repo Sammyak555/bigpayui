@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { AddingAdd } from '../Redux/action'
+import { AddingAdd, getAdd } from '../Redux/action'
 import "../Styles/Address.css"
 
 
@@ -36,19 +36,21 @@ const AddressForm = () => {
   const handleadd = (e) => {
     e.preventDefault();
     // console.log(data)
-    dispatch(AddingAdd(data))
+    dispatch(AddingAdd(data)).then(()=>{
+      dispatch(getAdd)
+    })
   }
 
   return (
     <>
-      <Button className='add' onClick={onOpen} variant={"unstyled"}>Add Address</Button>
+      <Button className='add' colorScheme='white' onClick={onOpen} variant={'ghost'}>Add Address</Button>
       <Container>
-        <Modal
+        <Modal 
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
           onClose={onClose}
-          size="5xl"
+          size="4xl"
         >
           <ModalOverlay />
           <ModalContent>

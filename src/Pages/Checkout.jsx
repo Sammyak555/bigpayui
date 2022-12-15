@@ -15,8 +15,7 @@ const Checkout = () => {
     const [style, setStyle] = useState("AddressBoxsmall");
     const [ns, setNs] = useState("")
 
-    // console.log(AllAddress)
-
+    console.log(AllAddress)
     useEffect(() => {
         dispatch(getAdd)
     }, [])
@@ -25,7 +24,7 @@ const Checkout = () => {
 
         setStyle("AddressBoxbig");
     };
-
+console.log(AllAddress)
     // const cardclick = (id) => {
     //     setStyle("AddressBoxsmall");
     //     console.log("hi")
@@ -55,7 +54,7 @@ const Checkout = () => {
                                 <WrapItem>
                                     <Center >
                                         {
-                                            AllAddress &&
+                                            AllAddress.length>0 &&
                                             AllAddress.map((item) => {
                                                 return (<AddressCard key={item.id} {...item} setStyle={setStyle} />)
                                             })

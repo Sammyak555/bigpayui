@@ -3,7 +3,7 @@
     font-weight: 300;
     font-size: 20px;
     color: rgb(79, 79, 79);
-    
+    margin-left: 760px;
 }
 .inpname{
     display: flex;
@@ -14,4 +14,16 @@
 }
 .address{
     width: 535px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .add{
+        font-family: sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        color: rgb(79, 79, 79);
+        margin-left: 560px;
+    }
+
+
 }

@@ -22,12 +22,15 @@
     width: 850px;
     height: fit-content;
     margin-bottom: 15px; 
+    display: flex;
 }
+
 .AddressBoxsmall{
-    border: 1px solid red;
+    border: 1px solid grey;
     width: 850px;
     height: fit-content;
     margin-bottom: 15px;  
+    
 }
 .addresscard{
     width: 300px;

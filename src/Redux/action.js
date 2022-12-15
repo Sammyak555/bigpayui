@@ -21,9 +21,19 @@ export const addaddressfail=()=>{
     return{type: types.ADD_ADDRESS_ERROR}
 }
 
+export const deladdressreq=()=>{
+    return{type: types.DELETE_ADDRESS_REQUEST}
+}
+export const deladdresssucc=(payload)=>{
+    return{type: types.DELETE_ADDRESS_SUCCESS,payload}
+}
+export const deladdressfail=()=>{
+    return{type: types.DELETE_ADDRESS_ERROR}
+}
+
 export const getAdd=(dispatch)=>{
     dispatch(getaddressreq())
-    return axios.get(`http://localhost:8080/AllAddress`)
+    return axios.get(`https://bigbasket-server.onrender.com/AllAddress`)
     .then((r)=>{
         dispatch(getaddresssucc(r.data))
     })
@@ -44,7 +54,7 @@ export const AddingAdd=(data)=>(dispatch)=>{
             pin:data.pin,
             house:data.house
         }
-    return axios.post(`http://localhost:8080/AllAddress`,payload)
+    return axios.post(`https://bigbasket-server.onrender.com/AllAddress`,payload)
     .then((r)=>{
         dispatch(addaddresssucc(r.data))
     })
@@ -52,4 +62,15 @@ export const AddingAdd=(data)=>(dispatch)=>{
         dispatch(addaddressfail())
     })
 }
+}
+
+export const deleteAddress=(id)=>(dispatch)=>{
+    dispatch(deladdressreq())
+    return axios.delete(`https://bigbasket-server.onrender.com/AllAddress/${id}`,)
+    .then((r)=>{
+        dispatch(deladdresssucc(r.data))
+    })
+    .catch((e)=>{
+        dispatch(deladdressfail())
+    })
 }
