@@ -14,6 +14,7 @@ const Payment = () => {
   const [divchange, setDivchange] = useState("Nbank")
   const [success, setSuccess] = useState("")
   const [note, setNote] = useState("")
+  
   // const[active1,setActive2] = useState(false)
 
   console.log(pininput)
@@ -67,7 +68,7 @@ const Payment = () => {
                         </h2>
                         <AccordionPanel pb={4}>
                           <label style={{ color: "grey" }}>Enter Linked Mobile Number</label>
-                          <Input variant='flushed' width='xs' />
+                          <Input variant='flushed' width='xs' isRequired/>
                           <br />
                           <h3 style={{ color: "rgb(75, 75, 75)", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
@@ -186,12 +187,52 @@ const Payment = () => {
                   <div className='upiother'>
                     <label style={{ fontWeight: "bold", color: "rgb(72, 72, 72)" }} >UPI id :</label>
                     <br />
-                    <Input variant='flushed' width='xs' placeholder={'user@bankname'} />
+                    <Input variant='flushed' width='auto' placeholder={'user@bankname'} />
                     <br />
                     <h3 style={{ color: "rgb(75, 75, 75)", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
-                    <Button variant='solid' width='25%' marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                    <Button onClick={onOpen} variant='solid' width='auto' marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
                       SEND OTP</Button>
+                      
+                          <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+                            <ModalOverlay />
+
+
+                            <ModalContent>
+                              <ModalHeader>Payment Process</ModalHeader>
+                              <ModalCloseButton onClick={() => { setVerify(true); setSuccess(''); setNote('');setPininput(''); }} />
+                              {verify &&
+                                <ModalBody>
+                                  <h1 >Amount Payable : </h1>
+                                  <br />
+                                  <Pin length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
+
+                                </ModalBody>
+                              }
+                              {
+                                !verify&&pininput==="12345" &&
+                                <ModalBody>
+                                  <h1 style={{ margin: "auto" }}>{note}</h1>
+                                  <img style={{ margin: "auto",width:"200px" }} src={success} alt="" />
+                                </ModalBody>
+                              }
+                              {
+                                !verify&&pininput!=="12345" &&
+                                <ModalBody>
+                                  <h1 style={{ margin: "auto" }}>Wrong Credentials !</h1>
+                                  <img style={{ margin: "auto",width:"200px" }} src="https://i.pinimg.com/originals/d0/17/47/d01747c4285afa4e7a6e8656c9cd60cb.png" alt="" />
+                                </ModalBody>
+                              }
+                              <ModalFooter>
+                                {/* <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                  Close
+                                </Button> */}
+                              </ModalFooter>
+                            </ModalContent>
+
+
+
+                          </Modal>
                   </div>
                 </div>
               }
@@ -247,12 +288,51 @@ const Payment = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <Input variant='flushed' width='xs' marginLeft={'-250px'} />
+                  <Input variant='flushed' width='xs' marginLeft={'auto'} />
                   <br />
-                  <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "-270px", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
+                  <h3 style={{ color: "rgb(75, 75, 75)", marginLeft: "auto", fontSize: "12px" }}>One time password (OTP) will be sent to this number</h3>
 
-                  <Button variant='solid' width='25%' marginLeft={'-370px'} marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
+                  <Button onClick={onOpen} variant='solid' width='auto' marginLeft={'auto'} marginTop="10px" borderRadius={'0px'} color={'white'} backgroundColor='rgb(132, 194, 37)'>
                     SEND OTP</Button>
+                    <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+                            <ModalOverlay />
+
+
+                            <ModalContent>
+                              <ModalHeader>Payment Process</ModalHeader>
+                              <ModalCloseButton onClick={() => { setVerify(true); setSuccess(''); setNote('');setPininput(''); }} />
+                              {verify &&
+                                <ModalBody>
+                                  <h1 >Amount Payable : </h1>
+                                  <br />
+                                  <Pin length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
+
+                                </ModalBody>
+                              }
+                              {
+                                !verify&&pininput==="12345" &&
+                                <ModalBody>
+                                  <h1 style={{ margin: "auto" }}>{note}</h1>
+                                  <img style={{ margin: "auto",width:"200px" }} src={success} alt="" />
+                                </ModalBody>
+                              }
+                              {
+                                !verify&&pininput!=="12345" &&
+                                <ModalBody>
+                                  <h1 style={{ margin: "auto" }}>Wrong Credentials !</h1>
+                                  <img style={{ margin: "auto",width:"200px" }} src="https://i.pinimg.com/originals/d0/17/47/d01747c4285afa4e7a6e8656c9cd60cb.png" alt="" />
+                                </ModalBody>
+                              }
+                              <ModalFooter>
+                                {/* <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                  Close
+                                </Button> */}
+                              </ModalFooter>
+                            </ModalContent>
+
+
+
+                          </Modal>
 
                 </AccordionPanel>
               </AccordionItem>

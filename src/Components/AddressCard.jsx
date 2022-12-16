@@ -4,13 +4,11 @@ import { useDispatch } from 'react-redux'
 import { deleteAddress, getAdd } from '../Redux/action'
 import "../Styles/AddressCard.css"
 
-const AddressCard = ({ id, fname, lname, address, pin, phone, city, house, setStyle }) => {
+const AddressCard = ({ id, fname, lname, address, pin, phone, city, house, setStyle,cardclick }) => {
   const dispatch=useDispatch()
 
   console.log(setStyle)
-  const cardclick=()=>{
-    setStyle("AddressBoxsmall")
-  }
+ 
 
   const handledelete=(id)=>{
     dispatch(deleteAddress(id)).then(()=>{

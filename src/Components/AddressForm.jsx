@@ -115,7 +115,7 @@ const AddressForm = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleadd} colorScheme="green" mr={3}>
+              <Button onClick={(e)=>{handleadd(e);onClose();}} colorScheme="green" mr={3}>
                 ADD ADDRESS
               </Button>
               <Button onClick={onClose}>CANCEL</Button>

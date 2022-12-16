@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AddressCard from '../Components/AddressCard'
 import AddressForm from '../Components/AddressForm'
-import DeliveryOption from '../Components/DeliveryOption'
 import OrderSummary from '../Components/OrderSummary'
 import Payment from '../Components/Payment'
 import { getAdd } from '../Redux/action'
@@ -18,32 +17,35 @@ const Checkout = () => {
     console.log(AllAddress)
     useEffect(() => {
         dispatch(getAdd)
+        changeStyle()
     }, [])
 
     const changeStyle = () => {
 
-        setStyle("AddressBoxbig");
+        if(AllAddress.length>0){
+            setStyle("AddressBoxbig");
+        }
     };
-console.log(AllAddress)
-    // const cardclick = (id) => {
-    //     setStyle("AddressBoxsmall");
-    //     console.log("hi")
-    // }
+console.log(style)
+    const cardclick = (id) => {
+        setNs("AddressBoxsmall");
+        console.log("hi")
+    }
     
-    // useEffect(() => {
-    //     if (ns !== "") {
-    //         setStyle()
-    //     } else {
-    //         setStyle("AddressBoxsmall")
-    //     }
-    // }, [ns])
+    useEffect(() => {
+        if (ns !== "") {
+            setStyle()
+        } else {
+            setStyle("AddressBoxsmall")
+        }
+    }, [ns])
     return (
         <div className='Checkout'>
             <div className='fake'>
             </div>
             <div className='Allbody'>
                 <div className='leftside'>
-                    <div className={style} onClick={changeStyle}>
+                    <div className={style||ns} onClick={changeStyle}>
                         {/* <div className='addresscard'>
                             
                         </div> */}
@@ -56,7 +58,7 @@ console.log(AllAddress)
                                         {
                                             AllAddress.length>0 &&
                                             AllAddress.map((item) => {
-                                                return (<AddressCard key={item.id} {...item} setStyle={setStyle} />)
+                                                return (<AddressCard key={item.id} cardclick={cardclick} {...item} setStyle={setStyle} />)
                                             })
                                         }
                                     </Center>
@@ -70,9 +72,7 @@ console.log(AllAddress)
 
                         </Wrap>
                     </div>
-                    <div className="delivery" >
-                        <DeliveryOption />
-                    </div>
+                    
                     <div className="paymentbox" >
                         <Payment />
                     </div>
